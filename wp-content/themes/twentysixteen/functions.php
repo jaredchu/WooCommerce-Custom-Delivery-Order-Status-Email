@@ -1,6 +1,6 @@
 <?php
 
-require get_template_directory() . '/inc/custom-order-email.php';
+//require get_template_directory() . '/inc/custom-order-email.php';
 
 /**
  * Twenty Sixteen functions and definitions

@@ -21,5 +21,6 @@ wp-content/plugins/hello.php
 .idea/
 
 wp-content/plugins/index.php
+wp-content/themes/*/functions.php
 
 
