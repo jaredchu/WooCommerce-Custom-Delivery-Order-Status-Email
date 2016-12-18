@@ -98,3 +98,9 @@ function add_text_custom_order_status_setting( $settings ) {
 	return $updated_settings;
 
 }
+
+// Include delivery statuse in order reports
+$order_slug = get_option( 'wc_custom_order_status_for_delivery_email_id', 1 );
+if ( $order_slug ) {
+	add_filter( 'woocommerce_reports_order_statuses', array( $order_slug ) );
+}
