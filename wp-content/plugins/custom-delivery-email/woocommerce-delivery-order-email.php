@@ -100,7 +100,10 @@ function add_text_custom_order_status_setting( $settings ) {
 }
 
 // Include delivery statuse in order reports
-$order_slug = get_option( 'wc_custom_order_status_for_delivery_email_id', 1 );
-if ( $order_slug ) {
-	add_filter( 'woocommerce_reports_order_statuses', array( $order_slug ) );
+function woocommerce_reports_get_order_report_query_filter( $query ){
+	$order_slug = get_option( 'wc_custom_order_status_for_delivery_email_id', 1 );
+	$query['where'] = substr_replace( $query['where'], $order_slug ,
+		strpos( $query['where'], 'wc-' . $order_slug), strlen('wc-' . $order_slug)  );
+	return $query;
 }
+add_filter( 'woocommerce_reports_get_order_report_query', 'woocommerce_reports_get_order_report_query_filter' );
